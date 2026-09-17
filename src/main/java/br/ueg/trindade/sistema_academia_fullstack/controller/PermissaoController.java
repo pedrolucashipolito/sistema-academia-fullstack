@@ -1,0 +1,33 @@
+package br.ueg.trindade.sistema_academia_fullstack.controller;
+
+import br.ueg.trindade.sistema_academia_fullstack.model.Permissao;
+import br.ueg.trindade.sistema_academia_fullstack.repository.PermissaoRepository;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/permissoes")
+public class PermissaoController {
+
+    private final PermissaoRepository permissaoRepository;
+
+    public PermissaoController(PermissaoRepository permissaoRepository) {
+        this.permissaoRepository = permissaoRepository;
+    }
+
+    @GetMapping
+    public List<Permissao> listar() {
+        return permissaoRepository.findAll();
+    }
+
+    @PostMapping
+    public Permissao inserir(@RequestBody Permissao permissao) {
+        return permissaoRepository.save(permissao);
+    }
+
+    @GetMapping("/{id}")
+    public Permissao buscarPorId(@PathVariable Long id) {
+        return permissaoRepository.findById(id).orElse(null);
+    }
+}
