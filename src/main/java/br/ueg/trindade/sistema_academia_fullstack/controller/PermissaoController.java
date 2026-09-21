@@ -31,4 +31,15 @@ public class PermissaoController {
     public Permissao buscarPorId(@PathVariable Long id) {
         return permissaoRepository.findById(id).orElse(null);
     }
+
+    @PutMapping("/{id}")
+    public Permissao atualizar(@PathVariable Long id, @RequestBody Permissao permissao) {
+        permissao.setId(id);
+        return permissaoRepository.save(permissao);
+    }
+
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable Long id) {
+        permissaoRepository.deleteById(id);
+    }
 }

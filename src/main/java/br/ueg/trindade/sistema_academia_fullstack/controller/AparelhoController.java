@@ -31,4 +31,15 @@ public class AparelhoController {
     public Aparelho buscarPorId(@PathVariable Long id) {
         return aparelhoRepository.findById(id).orElse(null);
     }
+
+    @PutMapping("/{id}")
+    public Aparelho atualizar(@PathVariable Long id, @RequestBody Aparelho aparelho) {
+        aparelho.setId(id);
+        return aparelhoRepository.save(aparelho);
+    }
+
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable Long id) {
+        aparelhoRepository.deleteById(id);
+    }
 }
