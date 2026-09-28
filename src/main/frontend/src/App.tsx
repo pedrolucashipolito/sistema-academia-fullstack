@@ -1,18 +1,7 @@
-import PermissaoList from "./components/PermissaoList";
-import AparelhoList from "./components/AparelhoList";
+import HomePage from "./pages/HomePage";
 
 function App() {
-  return (
-    <div>
-      <h1>Sistema Academia</h1>
-
-      <PermissaoList />
-
-      <hr />
-
-      <AparelhoList />
-    </div>
-  );
+  return <HomePage />;
 }
 
 export default App;
